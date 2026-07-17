@@ -1,0 +1,83 @@
+<h2 mat-dialog-title>
+
+    {{ data ? 'Edit Account' : 'Create Account' }}
+
+</h2>
+
+<mat-dialog-content>
+
+<form [formGroup]="accountForm">
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>
+
+            Account Code
+
+        </mat-label>
+
+        <input
+            matInput
+            formControlName="code">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>
+
+            Account Name
+
+        </mat-label>
+
+        <input
+            matInput
+            formControlName="name">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>
+
+            Account Type
+
+        </mat-label>
+
+        <mat-select formControlName="type">
+
+            <mat-option
+                *ngFor="let type of accountTypes"
+                [value]="type">
+
+                {{type}}
+
+            </mat-option>
+
+        </mat-select>
+
+    </mat-form-field>
+
+
+</form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+<button mat-button mat-dialog-close>
+
+Cancel
+
+</button>
+
+<button
+    mat-raised-button
+    color="primary"
+    (click)="save()">
+
+Save
+
+</button>
+
+</mat-dialog-actions>

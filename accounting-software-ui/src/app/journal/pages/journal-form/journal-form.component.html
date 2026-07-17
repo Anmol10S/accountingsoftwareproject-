@@ -1,0 +1,87 @@
+<div class="journal-form-container">
+
+    <h2>Create Journal Entry</h2>
+
+    <form [formGroup]="journalForm">
+
+        <div class="form-group">
+
+            <label>Transaction Date</label>
+
+            <input
+                type="date"
+                formControlName="transactionDate">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Description</label>
+
+            <input
+                type="text"
+                formControlName="description">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Reference Number</label>
+
+            <input
+                type="text"
+                formControlName="referenceNo"
+                placeholder="Auto Generated"
+                readonly>
+
+        </div>
+
+        <hr>
+
+        <app-journal-line-table
+
+            [journalLines]="journalLines">
+
+        </app-journal-line-table>
+        <br>
+        <hr>
+
+<div class="totals">
+
+    <h3>
+
+        Total Debit :
+        {{totalDebit}}
+
+    </h3>
+
+    <h3>
+
+        Total Credit :
+        {{totalCredit}}
+
+    </h3>
+
+    <h3
+        [style.color]="isBalanced ? 'green' : 'red'">
+
+        {{isBalanced ? '✓ Balanced' : '✗ Not Balanced'}}
+
+    </h3>
+
+</div>
+
+<br>
+
+        <button
+            type="button"
+            (click)="saveJournal()"
+            [disabled]="!isBalanced">
+
+            Save Journal
+
+        </button>
+
+    </form>
+
+</div>

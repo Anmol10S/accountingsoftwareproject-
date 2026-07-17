@@ -1,0 +1,59 @@
+.account-container{
+
+    padding:20px;
+
+}
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+button{
+
+    padding:8px 16px;
+
+    cursor:pointer;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+}
+
+th{
+
+    background:#1f2937;
+
+    color:white;
+
+    padding:12px;
+
+}
+
+td{
+
+    padding:12px;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+tr:hover{
+
+    background:#f7f7f7;
+
+}

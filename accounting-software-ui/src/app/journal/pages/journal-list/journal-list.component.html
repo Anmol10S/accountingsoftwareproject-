@@ -1,0 +1,78 @@
+<div class="journal-container">
+
+    <div class="header">
+
+        <h2>Journal Entries</h2>
+
+        <button
+            class="new-btn"
+            (click)="openCreateJournal()">
+
+            + New Journal
+
+        </button>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Reference No.</th>
+
+                <th>Date</th>
+
+                <th>Description</th>
+
+                <th>Total Debit</th>
+
+                <th>Total Credit</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let journal of journals">
+
+                <td>{{ journal.referenceNo }}</td>
+
+                <td>{{ journal.transactionDate }}</td>
+
+                <td>{{ journal.description }}</td>
+
+                <td>{{ journal.totalDebit | number:'1.2-2' }}</td>
+
+                <td>{{ journal.totalCredit | number:'1.2-2' }}</td>
+
+                <td>
+
+                    <button
+                        class="view-btn">
+
+                        View
+
+                    </button>
+
+                    <button
+                        class="edit-btn"
+                        (click)="openEditJournal(journal.id!)">
+
+                        Edit
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

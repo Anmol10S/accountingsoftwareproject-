@@ -1,0 +1,197 @@
+<div class="trial-balance-container">
+
+    <h2>
+
+        Trial Balance
+
+    </h2>
+
+    <div class="filters">
+
+        <label>
+
+            From
+
+        </label>
+
+        <input
+            type="date"
+            [(ngModel)]="fromDate"
+            (change)="checkAndLoadTrialBalance()">
+
+        <label>
+
+            To
+
+        </label>
+
+        <input
+            type="date"
+            [(ngModel)]="toDate"
+            (change)="checkAndLoadTrialBalance()">
+
+    </div>
+
+    <div *ngIf="trialBalance">
+
+        <div class="report-header">
+
+            <h3>
+
+                Trial Balance Report
+
+            </h3>
+
+            <p>
+
+                <strong>
+
+                    Period :
+
+                </strong>
+
+                {{trialBalance.fromDate | date:'dd-MMM-yyyy'}}
+
+                →
+
+                {{trialBalance.toDate | date:'dd-MMM-yyyy'}}
+
+            </p>
+
+        </div>
+
+        <table *ngIf="trialBalance.entries.length>0">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+
+                        Code
+
+                    </th>
+
+                    <th>
+
+                        Account
+
+                    </th>
+
+                    <th>
+
+                        Debit
+
+                    </th>
+
+                    <th>
+
+                        Credit
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr
+                    *ngFor="let entry of trialBalance.entries">
+
+                    <td>
+
+                        {{entry.accountCode}}
+
+                    </td>
+
+                    <td>
+
+                        {{entry.accountName}}
+
+                    </td>
+
+                    <td>
+
+                        <span *ngIf="entry.debit>0">
+
+                            {{entry.debit | currency:'INR':'symbol':'1.2-2'}}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span *ngIf="entry.credit>0">
+
+                            {{entry.credit | currency:'INR':'symbol':'1.2-2'}}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+            <tfoot>
+
+                <tr>
+
+                    <th colspan="2">
+
+                        TOTAL
+
+                    </th>
+
+                    <th>
+
+                        {{trialBalance.totalDebit | currency:'INR':'symbol':'1.2-2'}}
+
+                    </th>
+
+                    <th>
+
+                        {{trialBalance.totalCredit | currency:'INR':'symbol':'1.2-2'}}
+
+                    </th>
+
+                </tr>
+
+            </tfoot>
+
+        </table>
+
+        <div
+            class="status"
+
+            [class.balanced]="trialBalance.balanced"
+
+            [class.not-balanced]="!trialBalance.balanced">
+
+            <span *ngIf="trialBalance.balanced">
+
+                ✅ Trial Balance Balanced
+
+            </span>
+
+            <span *ngIf="!trialBalance.balanced">
+
+                ❌ Trial Balance Not Balanced
+
+            </span>
+
+        </div>
+
+        <div
+            *ngIf="trialBalance.entries.length==0"
+            class="empty">
+
+            No data available for the selected period.
+
+        </div>
+
+    </div>
+
+</div>

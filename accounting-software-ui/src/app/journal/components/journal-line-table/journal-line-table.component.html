@@ -1,0 +1,88 @@
+<h3>Journal Lines</h3>
+
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>Account</th>
+            <th>Debit</th>
+            <th>Credit</th>
+            <th>Action</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        <tr
+            *ngFor="let line of lines; let i = index"
+            [formGroup]="line">
+
+            <td>
+
+                <select formControlName="accountId">
+
+                    <option value="">
+
+                        Select Account
+
+                    </option>
+
+                    <option
+                        *ngFor="let account of accounts"
+                        [value]="account.id">
+
+                        {{account.code}} - {{account.name}}
+
+                    </option>
+
+                </select>
+
+            </td>
+
+            <td>
+
+                <input
+                    type="number"
+                    formControlName="debit">
+
+            </td>
+
+            <td>
+
+                <input
+                    type="number"
+                    formControlName="credit">
+
+            </td>
+
+            <td>
+
+                <button
+                    type="button"
+                    (click)="deleteLine(i)">
+
+                    Delete
+
+                </button>
+
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+<br>
+
+<button
+    type="button"
+    (click)="addLine()">
+
+    + Add Line
+
+</button>

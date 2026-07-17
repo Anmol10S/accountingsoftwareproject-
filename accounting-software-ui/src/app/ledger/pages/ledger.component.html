@@ -1,0 +1,231 @@
+<div class="ledger-container">
+
+    <h2>General Ledger</h2>
+
+    <div class="filters">
+
+        <label>
+
+            Account
+
+        </label>
+
+        <select
+            [(ngModel)]="selectedAccountId"
+            (change)="checkAndLoadLedger()">
+
+            <option value="0">
+
+                Select Account
+
+            </option>
+
+            <option
+                *ngFor="let account of accounts"
+                [value]="account.id">
+
+                {{account.code}} - {{account.name}}
+
+            </option>
+
+        </select>
+
+        <label>
+
+            From
+
+        </label>
+
+        <input
+            type="date"
+            [(ngModel)]="fromDate"
+            (change)="checkAndLoadLedger()">
+
+        <label>
+
+            To
+
+        </label>
+
+        <input
+            type="date"
+            [(ngModel)]="toDate"
+            (change)="checkAndLoadLedger()">
+
+    </div>
+
+    <div *ngIf="ledger">
+
+        <h3>
+
+            Account : {{ledger.accountName}}
+
+        </h3>
+
+        <p>
+
+            <strong>Period :</strong>
+
+            {{ledger.fromDate | date:'dd-MMM-yyyy'}}
+
+            →
+
+            {{ledger.toDate | date:'dd-MMM-yyyy'}}
+
+        </p>
+
+        <table *ngIf="ledger.entries.length > 0">
+
+            <thead>
+
+                <tr>
+
+                    <th>Date</th>
+
+                    <th>Reference</th>
+
+                    <th>Particulars</th>
+
+                    <th>Debit</th>
+
+                    <th>Credit</th>
+
+                    <th>Balance (Dr/Cr)</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <!-- Balance B/D -->
+
+                <tr class="balance-row">
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td>
+
+                        <strong>
+
+                            Balance B/D
+
+                        </strong>
+
+                    </td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td>
+
+                        <strong>
+
+                            {{ledger.openingBalance | currency:'INR':'symbol':'1.2-2'}}
+
+                            {{ledger.openingBalanceType}}
+
+                        </strong>
+
+                    </td>
+
+                </tr>
+
+                <!-- Ledger Entries -->
+
+                <tr *ngFor="let entry of ledger.entries">
+
+                    <td>
+
+                        {{entry.transactionDate | date:'dd-MMM-yyyy'}}
+
+                    </td>
+
+                    <td>
+
+                        {{entry.referenceNo}}
+
+                    </td>
+
+                    <td>
+
+                        {{entry.description}}
+
+                    </td>
+
+                    <td>
+
+                        {{entry.debit | currency:'INR':'symbol':'1.2-2'}}
+
+                    </td>
+
+                    <td>
+
+                        {{entry.credit | currency:'INR':'symbol':'1.2-2'}}
+
+                    </td>
+
+                    <td>
+
+                        {{entry.balance | currency:'INR':'symbol':'1.2-2'}}
+
+                        {{entry.balanceType}}
+
+                    </td>
+
+                </tr>
+
+                <!-- Balance C/D -->
+
+                <tr class="balance-row">
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td>
+
+                        <strong>
+
+                            Balance C/D
+
+                        </strong>
+
+                    </td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td>
+
+                        <strong>
+
+                            {{ledger.closingBalance | currency:'INR':'symbol':'1.2-2'}}
+
+                            {{ledger.closingBalanceType}}
+
+                        </strong>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div
+            *ngIf="ledger.entries.length == 0"
+            class="empty">
+
+            No transactions found for the selected period.
+
+        </div>
+
+    </div>
+
+</div>

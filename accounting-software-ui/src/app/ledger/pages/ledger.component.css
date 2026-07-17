@@ -1,0 +1,223 @@
+.ledger-container{
+
+    padding:30px;
+
+}
+
+h2{
+
+    margin-bottom:25px;
+
+}
+
+.filters{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    margin-bottom:30px;
+
+}
+
+.filters label{
+
+    font-weight:600;
+
+}
+
+.filters select,
+.filters input{
+
+    padding:8px 12px;
+
+    min-width:180px;
+
+    border:1px solid #ccc;
+
+    border-radius:6px;
+
+}
+
+.balance-box{
+
+    margin:25px 0;
+
+    padding:20px 25px;
+
+    background:#fafafa;
+
+    border-left:6px solid #1976d2;
+
+    border-radius:8px;
+
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+
+}
+
+.balance-box h3{
+
+    margin:0;
+
+    color:#555;
+
+}
+
+.balance-box h2{
+
+    margin-top:15px;
+
+    font-size:36px;
+
+    color:#222;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+    margin:25px 0;
+
+    background:white;
+
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+}
+
+thead{
+
+    background:#1976d2;
+
+    color:white;
+
+}
+
+th{
+
+    padding:16px;
+
+    font-size:15px;
+
+    text-align:left;
+
+}
+
+td{
+
+    padding:14px 16px;
+
+    border-bottom:1px solid #ececec;
+
+    font-size:15px;
+
+}
+
+tbody tr:nth-child(even){
+
+    background:#fafafa;
+
+}
+
+tbody tr:hover{
+
+    background:#f1f7ff;
+
+}
+
+th:nth-child(1),
+td:nth-child(1){
+
+    width:14%;
+
+}
+
+th:nth-child(2),
+td:nth-child(2){
+
+    width:14%;
+
+}
+
+th:nth-child(3),
+td:nth-child(3){
+
+    width:32%;
+
+}
+
+th:nth-child(4),
+td:nth-child(4),
+
+th:nth-child(5),
+td:nth-child(5),
+
+th:nth-child(6),
+td:nth-child(6){
+
+    width:13%;
+
+    text-align:right;
+
+}
+
+td:nth-child(3){
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.empty{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#777;
+
+    font-size:18px;
+
+    font-style:italic;
+
+}
+.balance-row{
+
+    background:#f3f7fc !important;
+
+    font-weight:bold;
+
+}
+
+.balance-row td{
+
+    padding:18px;
+
+    border-top:2px solid #1976d2;
+
+    border-bottom:2px solid #1976d2;
+
+}
+
+.balance-row td:last-child{
+
+    text-align:right;
+
+    font-size:17px;
+
+}

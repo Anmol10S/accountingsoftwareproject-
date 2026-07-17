@@ -1,0 +1,174 @@
+<div class="balance-sheet-container">
+
+    <h2>Balance Sheet</h2>
+
+    <div class="filters">
+
+        <label>From</label>
+
+        <input
+            type="date"
+            [(ngModel)]="fromDate"
+            (change)="checkAndLoadBalanceSheet()">
+
+        <label>To</label>
+
+        <input
+            type="date"
+            [(ngModel)]="toDate"
+            (change)="checkAndLoadBalanceSheet()">
+
+    </div>
+
+    <div *ngIf="balanceSheet">
+
+        <div class="report-header">
+
+            <h3>Balance Sheet</h3>
+
+            <p>
+
+                <strong>Period :</strong>
+
+                {{balanceSheet.fromDate | date:'dd-MMM-yyyy'}}
+
+                →
+
+                {{balanceSheet.toDate | date:'dd-MMM-yyyy'}}
+
+            </p>
+
+        </div>
+
+        <div class="balance-sheet-grid">
+
+            <!-- ================= ASSETS ================= -->
+
+            <div class="section">
+
+                <h3>Assets</h3>
+
+                <table>
+
+                    <tbody>
+
+                        <tr *ngFor="let asset of balanceSheet.assets">
+
+                            <td>
+
+                                {{asset.accountName}}
+
+                            </td>
+
+                            <td class="amount">
+
+                                {{asset.amount | currency:'INR':'symbol':'1.2-2'}}
+
+                            </td>
+
+                        </tr>
+
+                        <tr class="total-row">
+
+                            <td>Total Assets</td>
+
+                            <td class="amount">
+
+                                {{balanceSheet.totalAssets | currency:'INR':'symbol':'1.2-2'}}
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- ================= LIABILITIES + EQUITY ================= -->
+
+            <div class="section">
+
+                <h3>Liabilities & Equity</h3>
+
+                <table>
+
+                    <tbody>
+
+                        <tr *ngFor="let liability of balanceSheet.liabilities">
+
+                            <td>
+
+                                {{liability.accountName}}
+
+                            </td>
+
+                            <td class="amount">
+
+                                {{liability.amount | currency:'INR':'symbol':'1.2-2'}}
+
+                            </td>
+
+                        </tr>
+
+                        <tr *ngFor="let equity of balanceSheet.equity">
+
+                            <td>
+
+                                {{equity.accountName}}
+
+                            </td>
+
+                            <td class="amount">
+
+                                {{equity.amount | currency:'INR':'symbol':'1.2-2'}}
+
+                            </td>
+
+                        </tr>
+
+                        <tr class="total-row">
+
+                            <td>Total Liabilities & Equity</td>
+
+                            <td class="amount">
+
+                                {{balanceSheet.totalLiabilitiesAndEquity | currency:'INR':'symbol':'1.2-2'}}
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div
+            class="status"
+
+            [class.balanced]="balanceSheet.balanced"
+
+            [class.not-balanced]="!balanceSheet.balanced">
+
+            <span *ngIf="balanceSheet.balanced">
+
+                ✅ Balance Sheet Balanced
+
+            </span>
+
+            <span *ngIf="!balanceSheet.balanced">
+
+                ❌ Balance Sheet Not Balanced
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>

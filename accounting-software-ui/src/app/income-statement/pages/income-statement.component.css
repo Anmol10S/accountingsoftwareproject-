@@ -1,0 +1,111 @@
+.income-statement-container{
+
+    padding:30px;
+
+}
+
+.filters{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.filters input{
+
+    padding:8px;
+
+    border:1px solid #ccc;
+
+    border-radius:6px;
+
+}
+
+.report-header{
+
+    margin-bottom:25px;
+
+}
+
+.statement-card{
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+
+    padding:25px;
+
+}
+
+.statement-card h3{
+
+    margin-top:15px;
+
+    margin-bottom:15px;
+
+    color:#1976d2;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+td{
+
+    padding:14px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.amount{
+
+    text-align:right;
+
+    font-weight:500;
+
+}
+
+.total-row{
+
+    font-weight:bold;
+
+    background:#f3f3f3;
+
+}
+
+.profit-box{
+
+    margin-top:35px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    padding:18px;
+
+    border-radius:8px;
+
+    background:#e8f5e9;
+
+    color:#2e7d32;
+
+}

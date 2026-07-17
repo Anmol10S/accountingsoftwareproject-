@@ -1,0 +1,180 @@
+<div class="income-statement-container">
+
+    <h2>
+
+        Income Statement
+
+    </h2>
+
+    <div class="filters">
+
+        <label>
+
+            From
+
+        </label>
+
+        <input
+            type="date"
+            [(ngModel)]="fromDate"
+            (change)="checkAndLoadIncomeStatement()">
+
+        <label>
+
+            To
+
+        </label>
+
+        <input
+            type="date"
+            [(ngModel)]="toDate"
+            (change)="checkAndLoadIncomeStatement()">
+
+    </div>
+
+    <div *ngIf="incomeStatement">
+
+        <div class="report-header">
+
+            <h3>
+
+                Income Statement
+
+            </h3>
+
+            <p>
+
+                <strong>
+
+                    Period :
+
+                </strong>
+
+                {{incomeStatement.fromDate | date:'dd-MMM-yyyy'}}
+
+                →
+
+                {{incomeStatement.toDate | date:'dd-MMM-yyyy'}}
+
+            </p>
+
+        </div>
+
+        <div class="statement-card">
+
+            <h3>
+
+                Revenue
+
+            </h3>
+
+            <table>
+
+                <tbody>
+
+                    <tr *ngFor="let revenue of incomeStatement.revenues">
+
+                        <td>
+
+                            {{revenue.accountName}}
+
+                        </td>
+
+                        <td class="amount">
+
+                            {{revenue.amount | currency:'INR':'symbol':'1.2-2'}}
+
+                        </td>
+
+                    </tr>
+
+                    <tr class="total-row">
+
+                        <td>
+
+                            Total Revenue
+
+                        </td>
+
+                        <td class="amount">
+
+                            {{incomeStatement.totalRevenue | currency:'INR':'symbol':'1.2-2'}}
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <br>
+
+            <h3>
+
+                Expenses
+
+            </h3>
+
+            <table>
+
+                <tbody>
+
+                    <tr *ngFor="let expense of incomeStatement.expenses">
+
+                        <td>
+
+                            {{expense.accountName}}
+
+                        </td>
+
+                        <td class="amount">
+
+                            {{expense.amount | currency:'INR':'symbol':'1.2-2'}}
+
+                        </td>
+
+                    </tr>
+
+                    <tr class="total-row">
+
+                        <td>
+
+                            Total Expenses
+
+                        </td>
+
+                        <td class="amount">
+
+                            {{incomeStatement.totalExpense | currency:'INR':'symbol':'1.2-2'}}
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div
+                class="profit-box">
+
+                <span>
+
+                    Net Profit
+
+                </span>
+
+                <span>
+
+                    {{incomeStatement.netProfit | currency:'INR':'symbol':'1.2-2'}}
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

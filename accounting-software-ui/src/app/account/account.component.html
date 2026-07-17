@@ -1,0 +1,70 @@
+<div class="account-container">
+
+    <div class="header">
+
+        <h2>Accounts</h2>
+
+        <button
+        mat-raised-button
+        color="primary"
+        (click)="openCreateDialog()">
+
+        Add Account
+
+        </button>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Code</th>
+
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let account of accounts">
+
+                <td>{{account.code}}</td>
+
+                <td>{{account.name}}</td>
+
+                <td>{{account.type}}</td>
+
+                <td>
+
+                    <button
+                        mat-button
+                        color="primary"
+                        (click)="openEditDialog(account)">
+                        Edit
+                    </button>
+
+                    <button
+                        mat-button
+                        color="warn"
+                        (click)="openDeleteDialog(account)">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
